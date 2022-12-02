@@ -13,10 +13,10 @@ impl Day<u32> for Day1 {
                     .split('\n')
                     .filter(|e| !e.is_empty())
                     .map(|line| line.parse::<u32>())
-                    .collect::<Result<Vec<u32>, _>>()
+                    .collect::<Result<Vec<_>, _>>()
                     .map(|elf| elf.iter().sum())
             })
-            .collect::<Result<Vec<u32>, _>>()
+            .collect::<Result<Vec<_>, _>>()
             .map_err(|e| e.to_string())
             .map(|mut elves| {
                 elves.sort();

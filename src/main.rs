@@ -12,6 +12,7 @@ fn main() -> Result<(), String> {
         .map_err(|e| e.to_string())?
     {
         1 => days::day1::Day1::run()?,
+        2 => days::day2::Day2::run()?,
         _ => panic!("Oh we haven't gotten there yet..."),
     };
 
