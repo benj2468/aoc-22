@@ -7,7 +7,7 @@ fn main() -> Result<(), String> {
 
     let res = match args
         .nth(1)
-        .ok_or("Not enough args provided".to_string())?
+        .ok_or_else(|| "Not enough args provided".to_string())?
         .parse::<u32>()
         .map_err(|e| e.to_string())?
     {

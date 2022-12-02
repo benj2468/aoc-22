@@ -10,7 +10,7 @@ impl Day<u32> for Day1 {
             .split("\n\n")
             .map(|elf| {
                 String::from(elf)
-                    .split("\n")
+                    .split('\n')
                     .filter(|e| !e.is_empty())
                     .map(|line| line.parse::<u32>())
                     .collect::<Result<Vec<u32>, _>>()
