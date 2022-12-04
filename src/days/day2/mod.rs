@@ -43,10 +43,7 @@ pub struct Day2 {}
 
 impl Day<u32> for Day2 {
     fn run() -> Result<u32, String> {
-        let formatted_path = format!("src/days/day2/{}.txt", utils::run_ty());
-        let path = std::path::Path::new(&formatted_path);
-        Ok(std::fs::read_to_string(path)
-            .map_err(|e| e.to_string())?
+        Ok(utils::fetch_input(2)?
             .lines()
             .into_iter()
             .map(Line::from_str)
