@@ -39,9 +39,7 @@ use std::cmp::Reverse;
 
 impl Day<u32> for Day7 {
     fn run() -> Result<u32, String> {
-        let formatted_path = format!("src/days/day7/{}.txt", utils::run_ty());
-        let path = std::path::Path::new(&formatted_path);
-        let input = std::fs::read_to_string(path).map_err(|e| e.to_string())?;
+        let input = utils::fetch_input(7)?;
 
         let mut path: Vec<u32> = vec![0];
         let mut sum = 0;

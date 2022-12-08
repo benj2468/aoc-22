@@ -20,6 +20,7 @@ fn main() -> Result<(), String> {
         5 => days::day5::Day5::run()?,
         6 => days::day6::Day6::run()?,
         7 => days::day7::Day7::run()?,
+        8 => days::day8::Day8::run()?,
         _ => panic!("Oh we haven't gotten there yet..."),
     };
 
