@@ -6,4 +6,5 @@ pub trait Day<T: Display> {
 
 pub mod day1;
 pub mod day2;
+pub mod day7;
 mod utils;
