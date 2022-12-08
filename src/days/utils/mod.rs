@@ -1,3 +1,5 @@
+use std::collections::HashMap;
+
 use reqwest::header::COOKIE;
 
 pub fn fetch_input(day: u32) -> Result<String, String> {
@@ -32,4 +34,47 @@ fn fetch_real(day: u32) -> Result<String, String> {
         .map_err(|e| e.to_string())?
         .text()
         .map_err(|e| e.to_string())
+}
+
+#[derive(Debug, Default)]
+struct Tree<T> {
+    arena: Vec<Node<T>>,
+    root: Node<T>,
+}
+
+#[derive(Debug, Default)]
+struct Node<T> {
+    data: Option<T>,
+    parent: Option<usize>,
+    children: Vec<usize>,
+}
+
+enum TreeError {
+    InvalidNodeId,
+}
+
+impl<T: Default> Tree<T> {
+    fn add_child_to(&mut self, node_id: usize, child: T) -> Result<usize, TreeError> {
+        let child_id = self.arena.len();
+        let child_node = Node {
+            data: Some(child),
+            parent: Some(node_id),
+            ..Default::default()
+        };
+
+        self.arena.push(child_node);
+
+        let node = self
+            .arena
+            .get_mut(node_id)
+            .ok_or(TreeError::InvalidNodeId)?;
+
+        node.children.push(child_id);
+
+        Ok(child_id)
+    }
+
+    fn get_node(&self, node_id: usize) -> Result<&Node<T>, TreeError> {
+        self.arena.get(node_id).ok_or(TreeError::InvalidNodeId)
+    }
 }

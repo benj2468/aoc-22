@@ -17,6 +17,8 @@ fn main() -> Result<(), String> {
         2 => days::day2::Day2::run()?,
         3 => days::day3::Day3::run()?,
         4 => days::day4::Day4::run()?,
+        5 => days::day5::Day5::run()?,
+        6 => days::day6::Day6::run()?,
         _ => panic!("Oh we haven't gotten there yet..."),
     };
 
