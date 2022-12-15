@@ -84,10 +84,7 @@ impl Day<u32> for Day15 {
                     }
                 };
                 let rem_dist = d - s.man_dist(&p);
-                if rem_dist == 0 {
-                    y += 1;
-                }
-                y += rem_dist as i32;
+                y += (rem_dist + 1) as i32;
             }
             x += 1;
         }
