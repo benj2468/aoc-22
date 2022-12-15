@@ -36,6 +36,22 @@ fn fetch_real(day: u32) -> Result<String, String> {
         .map_err(|e| e.to_string())
 }
 
+#[derive(Debug, Hash, Default, PartialEq, Eq, Copy, Clone)]
+pub(crate) struct Point {
+    pub(crate) x: isize,
+    pub(crate) y: isize,
+}
+
+impl Point {
+    pub(crate) fn manhattan_distance(&self, other: &Self) -> usize {
+        self.x.abs_diff(other.x) + self.y.abs_diff(other.y)
+    }
+
+    pub(crate) fn absolute_distance(&self, other: &Self) -> usize {
+        (std::cmp::max(self.x.abs_diff(other.x), 1) * std::cmp::max(self.y.abs_diff(other.y), 1))
+    }
+}
+
 #[derive(Debug, Default)]
 struct Tree<T> {
     arena: Vec<Node<T>>,
